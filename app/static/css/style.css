@@ -27,6 +27,19 @@ p.copyright {
 
 .alert-info {
     width: 50%;
+    margin: auto;
+    color: #687430;
+    background-color: #e6ecca;
+    border-color: #aec251;
+}
+
+.btn-default {
+    border-color: #aec251;
+    color: #aec251;
+}
+
+.btn-default:hover {
+    background-color: #aec251;
 }
 
 .center {
@@ -91,4 +104,21 @@ p.copyright {
   height: auto !important;
   height: 100%;
   margin: 0 auto -4em;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 70%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
 }
