@@ -1,6 +1,12 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
-{% block title %}Login{% endblock %}
+{% block title %}
+    {% if add_department %}
+        Add Department
+    {% else %}
+        Edit Department
+    {% endif %}
+{% endblock %}
 {% block body %}
 <div class="content-section">
  <div class="outer">
