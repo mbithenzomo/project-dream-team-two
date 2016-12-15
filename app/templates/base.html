@@ -24,8 +24,9 @@
                   {% if current_user.is_authenticated %}
                     {% if current_user.is_admin %}
                       <li><a href="{{ url_for('home.admin_dashboard') }}">Dashboard</a></li>
-                      <li><a href="{{ url_for('admin.departments') }}">Departments</a></li>
-                      <li><a href="{{ url_for('admin.roles') }}">Roles</a></li>
+                      <li><a href="{{ url_for('admin.list_departments') }}">Departments</a></li>
+                      <li><a href="{{ url_for('admin.list_roles') }}">Roles</a></li>
+                      <li><a href="{{ url_for('admin.list_employees') }}">Employees</a></li>
                     {% else %}
                       <li><a href="{{ url_for('home.dashboard') }}">Dashboard</a></li>
                     {% endif %}
@@ -65,5 +66,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
