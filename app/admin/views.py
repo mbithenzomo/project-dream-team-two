@@ -80,7 +80,7 @@ def edit_department(id):
         db.session.commit()
         flash('You have successfully edited the department.')
 
-        # redirect to the admin dashboard
+        # redirect to the departments page
         return redirect(url_for('admin.list_departments'))
 
     form.description.data = department.description
@@ -103,7 +103,7 @@ def delete_department(id):
     db.session.commit()
     flash('You have successfully deleted the department.')
 
-    # redirect to the admin dashboard
+    # redirect to the departments page
     return redirect(url_for('admin.list_departments'))
 
     return render_template(title="Delete Department")
@@ -117,7 +117,7 @@ def delete_department(id):
 def list_roles():
     check_admin()
     """
-    Handle requests to the /admin/roles route
+    List all roles
     """
     roles = Role.query.all()
     return render_template('admin/roles/roles.html',
@@ -134,9 +134,9 @@ def add_role():
 
     add_role = True
 
-    form = DepartmentForm()
+    form = RoleForm()
     if form.validate_on_submit():
-        role = Role(name=form.email.data,
+        role = Role(name=form.name.data,
                     description=form.description.data)
 
         try:
@@ -148,8 +148,8 @@ def add_role():
             # in case role name already exists
             flash('Error: role name already exists.')
 
-        # redirect to the admin dashboard
-        return redirect(url_for('home.admin_dashboard'))
+        # redirect to the roles page
+        return redirect(url_for('admin.list_roles'))
 
     # load role template
     return render_template('admin/roles/role.html', add_role=add_role,
@@ -157,7 +157,6 @@ def add_role():
 
 
 @admin.route('/roles/edit/<int:id>', methods=['GET', 'POST'])
-# @role_permissions
 @login_required
 def edit_role(id):
     """
@@ -175,8 +174,8 @@ def edit_role(id):
         db.session.add(role)
         db.session.commit()
 
-        # redirect to the admin dashboard
-        return redirect(url_for('home.admin_dashboard'))
+        # redirect to the roles page
+        return redirect(url_for('admin.list_roles'))
 
     form.description.data = role.description
     form.name.data = role.name
@@ -185,7 +184,6 @@ def edit_role(id):
 
 
 @admin.route('/roles/delete/<int:id>', methods=['GET', 'POST'])
-# @role_permissions
 @login_required
 def delete_role(id):
     """
