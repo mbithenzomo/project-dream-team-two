@@ -29,20 +29,20 @@
                   <td> {{ role.name }} </td>
                   <td> {{ role.description }} </td>
                   <td>
-                    {% if role.employee.count %}
-                      {{ role.employee.count }}
+                    {% if role.employees %}
+                      {{ role.employees.count() }}
                     {% else %}
                       0
                     {% endif %}
                   </td>
                   <td>
                     <a href="{{ url_for('admin.edit_role', id=role.id) }}">
-                      <i class="fa fa-pencil"> Edit </i>
+                      <i class="fa fa-pencil"></i> Edit
                     </a>
                   </td>
                   <td>
                     <a href="{{ url_for('admin.delete_role', id=role.id) }}">
-                      <i class="fa fa-trash"> Delete </i>
+                      <i class="fa fa-trash"></i> Delete
                     </a>
                   </td>
                 </tr>
