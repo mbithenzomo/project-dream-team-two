@@ -24,7 +24,7 @@ def dashboard():
 @home.route('/admin/dashboard')
 @login_required
 def admin_dashboard():
-    # prevent non-admins from acessing the page
+    # prevent non-admins from accessing the page
     if not current_user.is_admin:
         abort(403)
 
